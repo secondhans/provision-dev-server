@@ -14,3 +14,8 @@ if [ "${CURRENT}" == "master" ]; then
     echo "current branch is master!! Don't run this on master, you fool!"
     exit 1
 fi
+
+git checkout master
+git pull
+git branch -d ${CURRENT}
+git push origin :${CURRENT}
