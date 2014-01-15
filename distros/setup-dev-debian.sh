@@ -3,7 +3,7 @@
 
 APT_REQUIREMENTS="apt-transport-https debian-keyring apt-file"
 
-DEFAULT_PACKAGES="virtualenvwrapper gcc devscripts cowdancer cdebootstrap libtool quilt dpatch git-buildpackage debootstrap colordiff lxc-docker"
+DEFAULT_PACKAGES="virtualenvwrapper gcc devscripts cowdancer cdebootstrap libtool quilt dpatch git-buildpackage debootstrap colordiff lxc-docker python-dev libmysqlclient-dev"
 
 
 

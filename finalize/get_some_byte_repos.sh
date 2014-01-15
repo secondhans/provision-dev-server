@@ -8,6 +8,14 @@ https://github.com/ByteInternet/bytedb-python"
 
 
 
+sanity_check () {
+    if [ -z "$PHOME" ]; then
+        echo "couldn't find PROJECT_HOME in ~/.bashrc. Aborting"
+        exit 1
+    fi
+}
+
+
 
 install_repos () {
     pushd . &>/dev/null
@@ -23,5 +31,5 @@ install_repos () {
 
 
 ### MAIN
-
+sanity_check
 install_repos
