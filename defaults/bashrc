@@ -1,1 +1,2 @@
-export PROJECT_HOME=/root/dev
+export PROJECT_HOME=${HOME}/dev
+export PATH=${PATH}:${HOME}/bin

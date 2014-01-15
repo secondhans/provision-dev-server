@@ -1,0 +1,16 @@
+#!/bin/bash
+
+########### DANGEROUS ##############
+
+# this will automatically switch back to the master branch and delete both the local AND THE REMOTE branch you were working on!
+
+CURRENT=`git branch | grep "^*" | awk '{print $2}'`
+if [ -z "${CURRENT}" ]; then
+    echo "current branch seems empty?! are we even in a git repo? aborting."
+    exit 1
+fi
+
+if [ "${CURRENT}" == "master" ]; then
+    echo "current branch is master!! Don't run this on master, you fool!"
+    exit 1
+fi

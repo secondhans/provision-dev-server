@@ -1,15 +1,24 @@
 #!/bin/bash  
 
+MYHOME=${HOME}
+
 BASE=`pwd`
 DEFAULT_DIR=${BASE}"/defaults"
 DISTRO_DIR=${BASE}"/distros"
 FINALIZE_DIR=${BASE}"/finalize"
+BIN_DIR=${BASE}"/bin"
 
 
 
 install_default_configs () {
-    cp ${DEFAULT_DIR}/vimrc ~/.vimrc
-    cat ${DEFAULT_DIR}/bashrc >>~/.bashrc
+    cp ${DEFAULT_DIR}/vimrc ${MYHOME}/.vimrc
+
+    cat ${DEFAULT_DIR}/bashrc | while read LINE; do
+        grep "$LINE" ${MYHOME}/.bashrc &>/dev/null
+        if [ $? -ne 0 ]; then
+            echo "${LINE}" >>${MYHOME}/.bashrc
+        fi
+    done
 }
 
 
@@ -22,11 +31,22 @@ fix_git_settings () {
 
 
 
+install_binaries () {
+    if [ ! -d ${MYHOME}/bin ]; then
+        mkdir ${MYHOME}/bin
+    fi
+
+    cp -a ${BIN_DIR}/* ${MYHOME}/bin
+}
+
+
+
 pre_setup_steps () {
     echo "---> STEP: pre-setup steps"
 
     install_default_configs
     fix_git_settings
+    install_binaries
 
     echo "---> DONE"
     echo
