@@ -9,6 +9,7 @@ FINALIZE_DIR=${BASE}"/finalize"
 
 install_default_configs () {
     cp ${DEFAULT_DIR}/vimrc ~/.vimrc
+    cat ${DEFAULT_DIR}/bashrc >>~/.bashrc
 }
 
 
