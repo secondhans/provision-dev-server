@@ -1,6 +1,9 @@
 #!/bin/bash  
 
-DEFAULT_DIR=`pwd`"/defaults"
+BASE=`pwd`
+DEFAULT_DIR=${BASE}"/defaults"
+DISTRO_DIR=${BASE}"/distros"
+FINALIZE_DIR=${BASE}"/finalize"
 
 
 
@@ -38,7 +41,7 @@ distro_specific_setup () {
     fi
 
     case "${DISTRO}" in
-        debian       ) ./setup-dev-debian.sh;;
+        debian       ) ${DISTRO_DIR}/setup-dev-debian.sh;;
         *            ) echo "unknown distro!";;
     esac
 }
@@ -47,6 +50,8 @@ distro_specific_setup () {
 
 post_setup_steps () {
     echo "---> STEP: post-setup steps"
+    echo "you can manually install/finalize the following scripts:"
+    find finalize/ -type f -executable
 
     echo "---> DONE"
     echo
