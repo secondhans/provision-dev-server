@@ -59,8 +59,12 @@ install_packages () {
 }
 
 
+post_message () {
+    echo
+}
 
 
 ### MAIN
 install_packages
+post_message
 
