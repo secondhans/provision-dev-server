@@ -14,12 +14,19 @@ install_default_configs () {
 
 
 
+fix_git_settings () {
+    git config --global user.name "Second Hans"
+    git config --global user.email knikkerr@gmail.com
+    git config --global credential.helper 'cache --timeout=7200'
+}
+
 
 
 pre_setup_steps () {
     echo "---> STEP: pre-setup steps"
 
     install_default_configs
+    fix_git_settings
 
     echo "---> DONE"
     echo
