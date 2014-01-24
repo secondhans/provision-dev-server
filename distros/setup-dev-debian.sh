@@ -3,7 +3,7 @@
 
 APT_REQUIREMENTS="apt-transport-https debian-keyring apt-file"
 
-DEFAULT_PACKAGES="virtualenvwrapper gcc devscripts cowdancer cdebootstrap libtool quilt dpatch git-buildpackage debootstrap colordiff lxc-docker python-dev libmysqlclient-dev"
+DEFAULT_PACKAGES="virtualenvwrapper gcc devscripts cowdancer cdebootstrap libtool quilt dpatch git-buildpackage debootstrap colordiff lxc-docker python-dev libmysqlclient-dev libxml2-dev"
 
 
 
@@ -38,6 +38,9 @@ pre_install_packages () {
 
 post_install_packages () {
     apt-get autoremove -y
+
+    # make sure virtualenv works right away
+    source /etc/bash_completion.d/virtualenvwrapper
 }
 
 install_packages () {

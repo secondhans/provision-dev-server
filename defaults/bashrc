@@ -1,2 +1,3 @@
+source /etc/bash_completion.d/virtualenvwrapper
 export PROJECT_HOME=${HOME}/dev
 export PATH=${PATH}:${HOME}/bin
