@@ -7,6 +7,7 @@ DEFAULT_DIR=${BASE}"/defaults"
 DISTRO_DIR=${BASE}"/distros"
 FINALIZE_DIR=${BASE}"/finalize"
 BIN_DIR=${BASE}"/bin"
+SCRIPTS_DIR=${BASE}"/scripts"
 
 
 
@@ -76,6 +77,12 @@ distro_specific_setup () {
 
 
 
+general_settings () {
+    . ${SCRIPTS_DIR}/networking.sh
+}
+
+
+
 post_setup_steps () {
     echo "---> STEP: post-setup steps"
     echo "you can manually install/finalize the following scripts:"
@@ -90,4 +97,8 @@ post_setup_steps () {
 
 pre_setup_steps
 distro_specific_setup
+
+general_settings
+
 post_setup_steps
+
